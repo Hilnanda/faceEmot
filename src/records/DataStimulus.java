@@ -13,14 +13,14 @@ import util.ConectaBanco;
  *
  * @author ACER
  */
-public class DataUser extends javax.swing.JFrame {
+public class DataStimulus extends javax.swing.JFrame {
 
     ConectaBanco conecta = new ConectaBanco();
     ControlPerson cod = new ControlPerson();
     /**
      * Creates new form DataUser
      */
-    public DataUser() {
+    public DataStimulus() {
         initComponents();
         
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -59,7 +59,7 @@ public class DataUser extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(100, 100, 100));
-        jLabel13.setText("Data User");
+        jLabel13.setText("Data Stimulus");
 
         txt_search.setBackground(new java.awt.Color(204, 204, 204));
         txt_search.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -112,13 +112,13 @@ public class DataUser extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "No", "Nama User", "Jenis Kelamin", "Ekspresi User", "Ekspresi Stimulus", "Video User", "Video Stimulus"
+                "No", "Nama Stimulus", "Label Ekspresi Stimulus", "Alamat Video"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
@@ -255,20 +255,21 @@ public class DataUser extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DataUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DataStimulus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DataUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DataStimulus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DataUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DataStimulus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DataUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DataStimulus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DataUser().setVisible(true);
+                new DataStimulus().setVisible(true);
             }
         });
     }
