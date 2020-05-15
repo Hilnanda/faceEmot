@@ -5,7 +5,7 @@ import javax.swing.JComboBox;
 
 public class FillCombo {
 
-    ConectaBanco conecta = new ConectaBanco();
+    Koneks conecta = new Koneks();
 
     public void preencherCombo(String SQL, JComboBox combo, String coluna) {
         conecta.conexao();

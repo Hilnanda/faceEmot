@@ -5,7 +5,7 @@
  */
 package recognizer;
 
-import util.ConectaBanco;
+import util.Koneks;
 import capture.ControlPerson;
 import capture.ModelPerson;
 import capture.Register;
@@ -42,6 +42,9 @@ import org.bytedeco.opencv.opencv_core.Size;
 import org.bytedeco.opencv.opencv_face.LBPHFaceRecognizer;
 import org.bytedeco.opencv.opencv_objdetect.CascadeClassifier;
 import org.bytedeco.opencv.opencv_videoio.VideoCapture;
+import records.DataDataset;
+import records.DataStimulus;
+import records.DataUser;
 
 /**
  *
@@ -70,7 +73,7 @@ public class Recognizer extends javax.swing.JFrame {
     int idPerson;
 
     //Utils
-    ConectaBanco conecta = new ConectaBanco();
+    Koneks conecta = new Koneks();
 
     /**
      * Creates new form Recognizer
@@ -83,64 +86,67 @@ public class Recognizer extends javax.swing.JFrame {
         startCamera();
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
+
         jLabel24.setForeground(Color.GRAY.darker());
         jLabel24.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jLabel24.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Register frame2 = new Register();
-                Recognizer.this.setVisible(false);
-                frame2.setVisible(true);
+                DataDataset s = new DataDataset();
+                s.setVisible(true);
             }
+
             @Override
             public void mouseExited(MouseEvent e) {
                 jLabel24.setText("- Daftar Dataset");
             }
+
             @Override
             public void mouseEntered(MouseEvent e) {
                 jLabel24.setText("<html><a href=''>" + "- Daftar Dataset" + "</a></html>");
             }
         });
-        
+
         jLabel25.setForeground(Color.GRAY.darker());
         jLabel25.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jLabel25.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Register frame2 = new Register();
-                Recognizer.this.setVisible(false);
-                frame2.setVisible(true);
+                DataStimulus ds = new DataStimulus();
+                ds.setVisible(true);
             }
+
             @Override
             public void mouseExited(MouseEvent e) {
                 jLabel25.setText("- Daftar Stimulus");
             }
+
             @Override
             public void mouseEntered(MouseEvent e) {
                 jLabel25.setText("<html><a href=''>" + "- Daftar Stimulus" + "</a></html>");
             }
         });
-        
+
         jLabel26.setForeground(Color.GRAY.darker());
         jLabel26.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jLabel26.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Register frame2 = new Register();
-                Recognizer.this.setVisible(false);
-                frame2.setVisible(true);
+                DataUser du = new DataUser();
+                du.setVisible(true);
             }
+
             @Override
             public void mouseExited(MouseEvent e) {
                 jLabel26.setText("- Daftar User");
             }
+
             @Override
             public void mouseEntered(MouseEvent e) {
                 jLabel26.setText("<html><a href=''>" + "- Daftar User" + "</a></html>");
             }
         });
-        
+
         jLabel16.setForeground(Color.GRAY.darker());
         jLabel16.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jLabel16.addMouseListener(new MouseAdapter() {
@@ -150,17 +156,18 @@ public class Recognizer extends javax.swing.JFrame {
 //                Recognizer.this.setVisible(false);
 //                frame2.setVisible(true);
             }
+
             @Override
             public void mouseExited(MouseEvent e) {
                 jLabel16.setText("Monitoring User");
             }
+
             @Override
             public void mouseEntered(MouseEvent e) {
                 jLabel16.setText("<html><a href=''>" + "Monitoring User" + "</a></html>");
             }
         });
     }
-    
 
     class DaemonThread implements Runnable {
 
@@ -245,7 +252,7 @@ public class Recognizer extends javax.swing.JFrame {
 
                 try {
                     conecta.executaSQL("SELECT * FROM dataset_register WHERE id_regis = " + String.valueOf(idPerson));
-                    
+
                     while (conecta.rs.next()) {
 //                        firstNamePerson = conecta.rs.getString("ekspresi");
 //                        jLabel10.setText("Ekspresi Anda, " + firstNamePerson);
@@ -255,17 +262,17 @@ public class Recognizer extends javax.swing.JFrame {
                         telefone = conecta.rs.getString("ekspresi");
                         if (telefone.equals("Marah")) {
                             marah++;
-                            marahF.setText(String.valueOf(marah));                        
-                        } else if (telefone.equals("Bahagia")){
+                            marahF.setText(String.valueOf(marah));
+                        } else if (telefone.equals("Bahagia")) {
                             bahagia++;
                             bahagiaF.setText(String.valueOf(bahagia));
-                        } else if (telefone.equals("Sedih")){
+                        } else if (telefone.equals("Sedih")) {
                             sedih++;
                             sedihF.setText(String.valueOf(sedih));
-                        } else if (telefone.equals("Jijik")){
+                        } else if (telefone.equals("Jijik")) {
                             jijik++;
                             jijikF.setText(String.valueOf(jijik));
-                        } else if (telefone.equals("Terkejut")){
+                        } else if (telefone.equals("Terkejut")) {
                             terkejut++;
                             terkejutF.setText(String.valueOf(terkejut));
                         }

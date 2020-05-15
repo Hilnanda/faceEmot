@@ -5,6 +5,9 @@
  */
 package user;
 
+import admin.Login;
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author ACER
@@ -118,7 +121,7 @@ public class UserWatch extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(100, 100, 100));
         jLabel12.setText("Register");
 
-        saveButton.setText("Finish");
+        saveButton.setText("Login Admin");
         saveButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         saveButton.setkAllowTab(false);
         saveButton.setkEndColor(new java.awt.Color(118, 195, 118));
@@ -131,6 +134,11 @@ public class UserWatch extends javax.swing.JFrame {
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
+            }
+        });
+        saveButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                saveButtonKeyPressed(evt);
             }
         });
 
@@ -281,7 +289,10 @@ public class UserWatch extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-
+     
+        Login lo = new Login();
+                lo.setVisible(true);
+                dispose();
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -291,6 +302,11 @@ public class UserWatch extends javax.swing.JFrame {
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void saveButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_saveButtonKeyPressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_saveButtonKeyPressed
 
     /**
      * @param args the command line arguments

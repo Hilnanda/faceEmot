@@ -1,6 +1,6 @@
 package records;
 
-import util.ConectaBanco;
+import util.Koneks;
 import capture.ControlPerson;
 import capture.ModelPerson;
 import recognizer.SendWhatsapp;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class Data extends javax.swing.JDialog {
 
-    ConectaBanco conecta = new ConectaBanco();
+    Koneks conecta = new Koneks();
     ControlPerson cod = new ControlPerson();
 
     public Data(java.awt.Frame parent, boolean modal) {

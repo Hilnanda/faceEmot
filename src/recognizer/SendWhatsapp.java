@@ -1,6 +1,6 @@
 package recognizer;
 
-import util.ConectaBanco;
+import util.Koneks;
 import util.RoundFrame;
 import java.awt.Desktop;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 public class SendWhatsapp extends javax.swing.JDialog {
 
     String tel, name;
-    ConectaBanco conecta = new ConectaBanco();
+    Koneks conecta = new Koneks();
 
     public SendWhatsapp(java.awt.Frame parent, boolean modal, String nome, String telefone) {
         super(parent, modal);

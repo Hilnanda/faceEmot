@@ -11,7 +11,7 @@ import java.sql.Statement;
  * Connect to the database (MySQL) Database: facial_recognition
  *
  */
-public class ConectaBanco {
+public class Koneks {
 
     public Statement stm;
     public ResultSet rs;
@@ -32,8 +32,8 @@ public class ConectaBanco {
      * <br><br>
      * <b>Example:</b>
      * <br>
-     * ConectaBanco conecta = new ConectaBanco();
-     * <br>
+ Koneks conecta = new Koneks();
+ <br>
      * conecta.conexao();
      *
      * @exception Error Database not exists, driver not configured correctly,
@@ -58,8 +58,8 @@ public class ConectaBanco {
      * <br><br>
      * <b>Example:</b>
      * <br>
-     * ConectaBanco conecta = new ConectaBanco();
-     * <br>
+ Koneks conecta = new Koneks();
+ <br>
      * conecta.conexao();
      * <br>
      * ...
@@ -84,8 +84,8 @@ public class ConectaBanco {
      * <br><br>
      * <b>Example:</b>
      * <br>
-     * ConectaBanco conecta = new ConectaBanco();
-     * <br>
+ Koneks conecta = new Koneks();
+ <br>
      * conecta.conexao();
      * <br>
      * conecta.executaSQL("SELECT * FROM table");

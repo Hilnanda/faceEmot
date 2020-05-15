@@ -45,7 +45,7 @@ public class ChartDaily extends JFrame {
     private XYDataset createDataset() {
         XYSeriesCollection dataset = null;
         try {
-            ConectaBanco conecta = new ConectaBanco();
+            Koneks conecta = new Koneks();
             conecta.conexao();
             conecta.executaSQL("SELECT DATE_FORMAT(STR_TO_DATE(person.register_date, '%d/%m/%Y'), '%Y-%m-%d') AS register_date, COUNT(first_name) AS visita\n"
                     + "FROM person \n"

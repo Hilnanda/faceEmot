@@ -6,8 +6,15 @@
 package records;
 
 import capture.ControlPerson;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import javax.swing.JFrame;
-import util.ConectaBanco;
+import recognizer.Recognizer;
+import util.Koneks;
 
 /**
  *
@@ -15,15 +22,108 @@ import util.ConectaBanco;
  */
 public class DataStimulus extends javax.swing.JFrame {
 
-    ConectaBanco conecta = new ConectaBanco();
+    Koneks conecta = new Koneks();
     ControlPerson cod = new ControlPerson();
+
     /**
      * Creates new form DataUser
      */
     public DataStimulus() {
         initComponents();
-        
+        paint_table();
+        cod.getStimulusData("SELECT * FROM stimulus ORDER BY ID_STIMULUS", stimulus_tabel);
+
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        jLabel24.setForeground(Color.GRAY.darker());
+        jLabel24.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jLabel24.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                DataDataset s = new DataDataset();
+                s.setVisible(true);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                jLabel24.setText("- Daftar Dataset");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                jLabel24.setText("<html><a href=''>" + "- Daftar Dataset" + "</a></html>");
+            }
+        });
+
+        jLabel25.setForeground(Color.GRAY.darker());
+        jLabel25.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jLabel25.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+//                DataStimulus ds = new DataStimulus();
+//                ds.setVisible(true);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                jLabel25.setText("- Daftar Stimulus");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                jLabel25.setText("<html><a href=''>" + "- Daftar Stimulus" + "</a></html>");
+            }
+        });
+
+        jLabel26.setForeground(Color.GRAY.darker());
+        jLabel26.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jLabel26.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                DataUser du = new DataUser();
+                du.setVisible(true);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                jLabel26.setText("- Daftar User");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                jLabel26.setText("<html><a href=''>" + "- Daftar User" + "</a></html>");
+            }
+        });
+
+        jLabel16.setForeground(Color.GRAY.darker());
+        jLabel16.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jLabel16.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Recognizer re = new Recognizer();
+                re.setVisible(true);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                jLabel16.setText("Monitoring User");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                jLabel16.setText("<html><a href=''>" + "Monitoring User" + "</a></html>");
+            }
+        });
+    }
+    
+    private void paint_table() {
+        jScrollPane2.getViewport().setBackground(Color.WHITE);
+        stimulus_tabel.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        stimulus_tabel.getTableHeader().setOpaque(false);
+        stimulus_tabel.getTableHeader().setBackground(new Color(60, 127, 177));
+        stimulus_tabel.getTableHeader().setForeground(new Color(255, 255, 255));
+        stimulus_tabel.setRowHeight(50);
+        
     }
 
     /**
@@ -43,7 +143,7 @@ public class DataStimulus extends javax.swing.JFrame {
         txt_id_label = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        stimulus_tabel = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel4 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -91,7 +191,7 @@ public class DataStimulus extends javax.swing.JFrame {
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 80, 50));
 
         txt_id_label.setBackground(new java.awt.Color(132, 242, 145));
-        txt_id_label.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txt_id_label.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         txt_id_label.setForeground(new java.awt.Color(255, 255, 255));
         txt_id_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel3.add(txt_id_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 40, 50));
@@ -109,8 +209,8 @@ public class DataStimulus extends javax.swing.JFrame {
         });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 0, 40, 50));
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        stimulus_tabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        stimulus_tabel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -121,7 +221,12 @@ public class DataStimulus extends javax.swing.JFrame {
                 "No", "Nama Stimulus", "Label Ekspresi Stimulus", "Alamat Video"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        stimulus_tabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                stimulus_tabelMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(stimulus_tabel);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -230,13 +335,29 @@ public class DataStimulus extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_searchFocusLost
 
     private void txt_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyReleased
-//        cod.preencherTabela("SELECT * FROM person WHERE first_name LIKE '%" + txt_search.getText() + "%' OR last_name LIKE '%" + txt_search.getText() + "%' OR office LIKE '%" + txt_search.getText() + "%' ORDER BY id", tabela);
+        cod.getStimulusData("SELECT * FROM stimulus WHERE NAMA_STIMULUS LIKE '%" + txt_search.getText() + "%' ORDER BY ID_STIMULUS", stimulus_tabel);
     }//GEN-LAST:event_txt_searchKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+    int id;
+    private void stimulus_tabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stimulus_tabelMouseClicked
+        // TODO add your handling code here:
+        conecta.conexao();
+        try {
+            String nome = "" + stimulus_tabel.getValueAt(stimulus_tabel.getSelectedRow(), 1);
+            conecta.executaSQL("SELECT * FROM stimulus WHERE ID_STIMULUS = '" + nome + "'");
+            conecta.rs.first();
+            id = conecta.rs.getInt("ID_STIMULUS");
+            txt_id_label.setText(String.valueOf(id));
+
+        } catch (SQLException s) {
+            //JOptionPane.showMessageDialog(rootPane, "Erro ao Selecionar os Dados!\nErro:" + s);
+        }
+        conecta.desconecta();
+    }//GEN-LAST:event_stimulus_tabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -287,7 +408,7 @@ public class DataStimulus extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable stimulus_tabel;
     private javax.swing.JLabel txt_id_label;
     private javax.swing.JTextField txt_search;
     // End of variables declaration//GEN-END:variables

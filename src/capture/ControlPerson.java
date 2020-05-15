@@ -1,6 +1,6 @@
 package capture;
 
-import util.ConectaBanco;
+import util.Koneks;
 import util.ModeloTabela;
 import java.awt.Component;
 import java.awt.Image;
@@ -20,7 +20,7 @@ import javax.swing.table.TableModel;
 
 public class ControlPerson {
 
-    ConectaBanco conecta = new ConectaBanco();
+    Koneks conecta = new Koneks();
     public void insert(ModelPerson mod) {
         
 String date = new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentTimeMillis()));
@@ -77,6 +77,131 @@ String date = new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentT
         } finally {
             conecta.desconecta();
         }
+    }
+    
+    public void getUserData(String SQL, JTable tabela) {
+        String id = null;
+
+        conecta.conexao();
+        ArrayList dados = new ArrayList();
+        String[] Colunas = new String[]{"", "ID", "Nama User", "Jenis Kelamin","Bahagia","Sedih","Jijik","Terkejut","Marah", "Ekspresi User", "Ekspresi Stimulus", "Video User","Video Stimulus","Keterangan"};
+        conecta.executaSQL(SQL);
+        try {
+            conecta.rs.first();
+            do {
+                dados.add(new Object[]{
+                    "",
+                    conecta.rs.getString("ID_USER"),
+                    conecta.rs.getString("NAMA_USER"),
+                    conecta.rs.getString("JENIS_KELAMIN"),
+                    conecta.rs.getString("HAPPY_USER"),
+                    conecta.rs.getString("SAD_USER"),
+                    conecta.rs.getString("DISGUST_USER"),
+                    conecta.rs.getString("SURPRISED_USER"),
+                    conecta.rs.getString("ANGRY_USER"),
+                    conecta.rs.getString("EKSPRESI_HASIL"),
+                    conecta.rs.getString("EKSPRESI_STIMULUS"),
+                    conecta.rs.getString("VIDEO_USER"),
+                    conecta.rs.getString("SOURCE_STIMULUS"),
+                    conecta.rs.getString("KETERANGAN_USER")
+                });
+            } while (conecta.rs.next());
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(rootPane, "Lista de Cadastro Vazia!");
+        } finally {
+            conecta.desconecta();
+        }
+
+        ModeloTabela modelo = new ModeloTabela(dados, Colunas);
+        tabela.setModel((TableModel) modelo);
+        tabela.getColumnModel().getColumn(0).setPreferredWidth(0);
+        tabela.getColumnModel().getColumn(1).setPreferredWidth(50);
+        tabela.getColumnModel().getColumn(2).setPreferredWidth(200);
+        tabela.getColumnModel().getColumn(3).setPreferredWidth(200);
+        tabela.getColumnModel().getColumn(4).setPreferredWidth(100);
+        tabela.getColumnModel().getColumn(5).setPreferredWidth(100);
+        tabela.getColumnModel().getColumn(6).setPreferredWidth(100);
+        tabela.getColumnModel().getColumn(7).setPreferredWidth(100);
+        tabela.getColumnModel().getColumn(8).setPreferredWidth(100);
+        tabela.getColumnModel().getColumn(9).setPreferredWidth(200);
+        tabela.getColumnModel().getColumn(10).setPreferredWidth(200);
+        tabela.getColumnModel().getColumn(11).setPreferredWidth(200);
+        tabela.getColumnModel().getColumn(12).setPreferredWidth(200);
+        tabela.getColumnModel().getColumn(13).setPreferredWidth(200);
+    }
+    
+    public void getDatasetData(String SQL, JTable tabela) {
+        String id = null;
+
+        conecta.conexao();
+        ArrayList dados = new ArrayList();
+        String[] Colunas = new String[]{"","ID", "Nama Lengkap", "Kamera", "Jarak Layar (cm)", "Ekspresi", "Tanggal Registrasi","Keterangan"};
+        conecta.executaSQL(SQL);
+        try {
+            conecta.rs.first();
+            do {
+                dados.add(new Object[]{
+                    "",
+                    conecta.rs.getInt("id_regis"),
+                    conecta.rs.getString("nama_lengkap"),
+                    conecta.rs.getString("kamera"),
+                    conecta.rs.getString("jarak_layar"),
+                    conecta.rs.getString("ekspresi"),
+                    conecta.rs.getString("tgl_regis"),
+                    conecta.rs.getString("keterangan")
+                });
+            } while (conecta.rs.next());
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(rootPane, "Lista de Cadastro Vazia!");
+        } finally {
+            conecta.desconecta();
+        }
+
+        ModeloTabela modelo = new ModeloTabela(dados, Colunas);
+        tabela.setModel((TableModel) modelo);
+        tabela.getColumnModel().getColumn(0).setPreferredWidth(0);
+        tabela.getColumnModel().getColumn(1).setPreferredWidth(50);
+        tabela.getColumnModel().getColumn(2).setPreferredWidth(200);
+        tabela.getColumnModel().getColumn(3).setPreferredWidth(200);
+        tabela.getColumnModel().getColumn(4).setPreferredWidth(150);
+        tabela.getColumnModel().getColumn(5).setPreferredWidth(200);
+        tabela.getColumnModel().getColumn(6).setPreferredWidth(300);
+        tabela.getColumnModel().getColumn(7).setPreferredWidth(500);
+    }
+    
+    
+    public void getStimulusData(String SQL, JTable tabela) {
+        String id = null;
+
+        conecta.conexao();
+        ArrayList dados = new ArrayList();
+        String[] Colunas = new String[]{"","ID", "Nama Stimulus", "Ekspresi Stimulus", "Video Stimulus"};
+        conecta.executaSQL(SQL);
+        try {
+            conecta.rs.first();
+            do {
+                dados.add(new Object[]{
+                    "",
+                    conecta.rs.getInt("ID_STIMULUS"),
+                    conecta.rs.getString("NAMA_STIMULUS"),
+                    conecta.rs.getString("EKSPRESI_STIMULUS"),
+                    conecta.rs.getString("SOURCE_STIMULUS")
+                });
+            } while (conecta.rs.next());
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(rootPane, "Lista de Cadastro Vazia!");
+        } finally {
+            conecta.desconecta();
+        }
+
+        ModeloTabela modelo = new ModeloTabela(dados, Colunas);
+        tabela.setModel((TableModel) modelo);
+        tabela.getColumnModel().getColumn(0).setPreferredWidth(0);
+        tabela.getColumnModel().getColumn(1).setPreferredWidth(50);
+        tabela.getColumnModel().getColumn(2).setPreferredWidth(300);
+        tabela.getColumnModel().getColumn(3).setPreferredWidth(300);
+        tabela.getColumnModel().getColumn(4).setPreferredWidth(450);
+        
     }
 
     public void preencherTabela(String SQL, JTable tabela) {

@@ -1,6 +1,6 @@
 package capture;
 
-import util.ConectaBanco;
+import util.Koneks;
 import util.TrainLBPH;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -45,7 +45,7 @@ public class RegisterFace extends javax.swing.JDialog {
     int numSamples = 25, sample = 1, idPerson;
 
     //Connection
-    ConectaBanco conecta = new ConectaBanco();
+    Koneks conecta = new Koneks();
 
     /**
      * @param parent It's the JFrame that's calling it

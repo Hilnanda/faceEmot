@@ -1,7 +1,7 @@
 package admin;
 
 import recognizer.*;
-import util.ConectaBanco;
+import util.Koneks;
 import capture.ControlPerson;
 import capture.ModelPerson;
 import java.awt.BorderLayout;
@@ -76,7 +76,7 @@ public class AdminMonitor extends javax.swing.JDialog {
     int idPerson;
 
     //Utils
-    ConectaBanco conecta = new ConectaBanco();
+    Koneks conecta = new Koneks();
 
     public AdminMonitor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

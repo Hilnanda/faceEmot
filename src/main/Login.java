@@ -1,6 +1,6 @@
 package main;
 
-import util.ConectaBanco;
+import util.Koneks;
 import util.FillCombo;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class Login extends javax.swing.JFrame {
 
-    ConectaBanco conecta = new ConectaBanco();
+    Koneks conecta = new Koneks();
 
     public Login() {
         initComponents();

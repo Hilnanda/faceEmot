@@ -6,7 +6,7 @@
 package capture;
 
 import java.awt.Frame;
-import util.ConectaBanco;
+import util.Koneks;
 import util.TrainLBPH;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -52,7 +52,7 @@ public class Register extends javax.swing.JFrame {
     int numSamples = 50, sample = 1, idPerson;
 
     //Connection
-    ConectaBanco conecta = new ConectaBanco();
+    Koneks conecta = new Koneks();
 
     /**
      * @param parent It's the JFrame that's calling it

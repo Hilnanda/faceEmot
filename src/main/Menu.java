@@ -3,7 +3,7 @@ package main;
 import capture.RegisterFace;
 import records.Data;
 import recognizer.RecognizeFace;
-import util.ConectaBanco;
+import util.Koneks;
 import util.RoundImage;
 import util.ChartDaily;
 import java.awt.Desktop;
@@ -23,7 +23,7 @@ import org.ocpsoft.prettytime.PrettyTime;
 
 public class Menu extends javax.swing.JFrame {
 
-    ConectaBanco conecta = new ConectaBanco();
+    Koneks conecta = new Koneks();
 
     public Menu(String user) {
         initComponents();

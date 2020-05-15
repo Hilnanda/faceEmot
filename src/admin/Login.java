@@ -5,11 +5,21 @@
  */
 package admin;
 
+import java.awt.event.KeyEvent;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import recognizer.Recognizer;
+import util.Koneks;
+
 /**
  *
  * @author ACER
  */
 public class Login extends javax.swing.JFrame {
+
+    Koneks conect = new Koneks();
+    ResultSet rs;
 
     /**
      * Creates new form Login
@@ -34,10 +44,11 @@ public class Login extends javax.swing.JFrame {
         username_F = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         kGradientPanel4 = new keeptoo.KGradientPanel();
-        password_F = new javax.swing.JTextField();
+        password_F = new javax.swing.JPasswordField();
         saveButton = new keeptoo.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(100, 100, 100));
@@ -65,6 +76,11 @@ public class Login extends javax.swing.JFrame {
 
         password_F.setBorder(null);
         password_F.setOpaque(false);
+        password_F.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                password_FKeyPressed(evt);
+            }
+        });
         kGradientPanel4.add(password_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 360, 30));
 
         saveButton.setText("Login");
@@ -79,6 +95,11 @@ public class Login extends javax.swing.JFrame {
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
+            }
+        });
+        saveButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                saveButtonKeyPressed(evt);
             }
         });
 
@@ -126,14 +147,13 @@ public class Login extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(307, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(407, 407, 407))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(238, 238, 238))))
+                .addContainerGap(261, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(284, 284, 284))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(429, 429, 429)
+                .addComponent(jLabel13)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +170,49 @@ public class Login extends javax.swing.JFrame {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
 
+        String username = username_F.getText();
+        String password = password_F.getText();
+
+        try {
+            conect.conexao();
+
+            PreparedStatement pst = conect.conn.prepareStatement("Select * from akun where USERNAME_AKUN=? and PASSWORD_AKUN=?");
+            pst.setString(1, username);
+            pst.setString(2, password);
+
+            rs = pst.executeQuery();
+            if (username.equalsIgnoreCase("") && password.equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(null, "Username dan Password harus di isi!");
+            } else {
+                if (rs.next()) {
+                    JOptionPane.showMessageDialog(null, "Login Berhasil");
+                    Recognizer r = new Recognizer();
+                    r.setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Password Salah");
+                    username_F.setText("");
+                    password_F.setText("");
+                }
+            }
+
+            pst.close();
+            rs.close();
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void saveButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_saveButtonKeyPressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_saveButtonKeyPressed
+
+    private void password_FKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_password_FKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            saveButtonActionPerformed(null);
+        } 
+    }//GEN-LAST:event_password_FKeyPressed
 
     /**
      * @param args the command line arguments
@@ -194,7 +256,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private keeptoo.KGradientPanel kGradientPanel1;
     private keeptoo.KGradientPanel kGradientPanel4;
-    private javax.swing.JTextField password_F;
+    private javax.swing.JPasswordField password_F;
     private keeptoo.KButton saveButton;
     private javax.swing.JTextField username_F;
     // End of variables declaration//GEN-END:variables

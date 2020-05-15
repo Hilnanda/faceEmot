@@ -1,6 +1,6 @@
 package recognizer;
 
-import util.ConectaBanco;
+import util.Koneks;
 import capture.ControlPerson;
 import capture.ModelPerson;
 import java.awt.Desktop;
@@ -54,7 +54,7 @@ public class RecognizeFace extends javax.swing.JDialog {
     int idPerson;
 
     //Utils
-    ConectaBanco conecta = new ConectaBanco();
+    Koneks conecta = new Koneks();
 
     public RecognizeFace(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
