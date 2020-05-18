@@ -17,6 +17,8 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
+import records.model.ModelStimulus;
+import records.model.ModelUserData;
 
 public class ControlPerson {
 
@@ -45,11 +47,51 @@ String date = new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentT
             System.out.println("Error: " + ex);
         }
     }
+    public void insertStimulus(ModelStimulus mod) {
+        
+
+        try {
+            conecta.conexao();
+            PreparedStatement pst = conecta.conn.prepareStatement("INSERT INTO stimulus (NAMA_STIMULUS, SOURCE_STIMULUS, EKSPRESI_STIMULUS) VALUES (?, ?, ?)");
+            pst.setString(1, mod.getNama_stimulus());
+            pst.setString(2, mod.getSource_stimulus());
+            pst.setString(3, mod.getEkspresi_stimulus());
+            
+//            pst.setString(8, mod.getLinkedin());
+//            pst.setString(9, mod.getGithub());
+//            pst.setString(10, date);
+            pst.executeUpdate();
+//            System.out.println("Dados do(a): " + mod.getEkspresi() + " cadastrados");
+            conecta.desconecta();
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex);
+        }
+    }
+    public void insertUserData(ModelUserData mod) {
+        
+
+        try {
+            conecta.conexao();
+            PreparedStatement pst = conecta.conn.prepareStatement("INSERT INTO userdata (ID_STIMULUS,NAMA_USER,JENIS_KELAMIN) VALUES (?, ?, ?)");
+            pst.setInt(1, mod.getID_STIMULUS());
+            pst.setString(2, mod.getNAMA_USER());
+            pst.setString(3, mod.getJENIS_KELAMIN());
+            
+//            pst.setString(8, mod.getLinkedin());
+//            pst.setString(9, mod.getGithub());
+//            pst.setString(10, date);
+            pst.executeUpdate();
+//            System.out.println("Dados do(a): " + mod.getEkspresi() + " cadastrados");
+            conecta.desconecta();
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex);
+        }
+    }
 
     public void update(ModelPerson mod, int id_regis) {
         conecta.conexao();
         try {
-            PreparedStatement pst = conecta.conn.prepareStatement("UPDATE dataset_register SET nama_lengkap= ?, kamera= ?, jarak_layar= ?, ekspresi= ?, tgl_regis= ?, keterangan= ? WHERE id_regis=?");
+            PreparedStatement pst = conecta.conn.prepareStatement("UPDATE dataset_register SET nama_lengkap= ?, kamera= ?, jarak_layar= ?, ekspresi= ?, keterangan= ? WHERE id_regis=?");
             pst.setString(1, mod.getNama_lengkap());
             pst.setString(2, mod.getKamera());
             pst.setInt(3, mod.getJarak_layar());
@@ -63,17 +105,56 @@ String date = new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentT
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar dados\n ERRO: " + ex);
         }
-        conecta.desconecta();
+//        conecta.desconecta();
+    }
+    public void updateStimulus(ModelStimulus mod, int id_stimulus) {
+        conecta.conexao();
+        try {
+            PreparedStatement pst = conecta.conn.prepareStatement("UPDATE stimulus SET NAMA_STIMULUS= ?, SOURCE_STIMULUS= ?, EKSPRESI_STIMULUS= ? WHERE ID_STIMULUS=?");
+            pst.setString(1, mod.getNama_stimulus());
+            pst.setString(2, mod.getSource_stimulus());
+            pst.setString(3, mod.getEkspresi_stimulus());
+            
+            pst.setInt(4, id_stimulus);
+            pst.execute();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Jumlah: " + ex);
+        }
+//        conecta.desconecta();
     }
 
     public void delete(int id) {
         conecta.conexao();
         try {
-            PreparedStatement pst = conecta.conn.prepareStatement("DELETE FROM person WHERE id= '" + id + "'");
+            PreparedStatement pst = conecta.conn.prepareStatement("DELETE FROM dataset_register WHERE id_regis= '" + id + "'");
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Excluído com Sucesso!");
+            JOptionPane.showMessageDialog(null, "Data Berhasil di Hapus!");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao excluir apartamento. Tente Novamente!");
+            JOptionPane.showMessageDialog(null, "Error!");
+        } finally {
+            conecta.desconecta();
+        }
+    }
+    public void deleteStimulus(int id) {
+        conecta.conexao();
+        try {
+            PreparedStatement pst = conecta.conn.prepareStatement("DELETE FROM stimulus WHERE ID_STIMULUS= '" + id + "'");
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Data Berhasil di Hapus!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error!");
+        } finally {
+            conecta.desconecta();
+        }
+    }
+    public void deleteUser(int id) {
+        conecta.conexao();
+        try {
+            PreparedStatement pst = conecta.conn.prepareStatement("DELETE FROM userdata WHERE ID_USER= '" + id + "'");
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Data Berhasil di Hapus!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error!");
         } finally {
             conecta.desconecta();
         }

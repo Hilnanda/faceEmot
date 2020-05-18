@@ -6,6 +6,7 @@
 package records;
 
 import capture.ControlPerson;
+import capture.ModelPerson;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
@@ -13,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import recognizer.Recognizer;
 import util.Koneks;
 
@@ -24,16 +26,17 @@ public class DataDataset extends javax.swing.JFrame {
 
     Koneks conecta = new Koneks();
     ControlPerson cod = new ControlPerson();
+
     /**
      * Creates new form DataUser
      */
     public DataDataset() {
         initComponents();
-        
+
         paint_table();
         cod.getDatasetData("SELECT * FROM dataset_register ORDER BY id_regis", dataset_tabel);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
+
         jLabel24.setForeground(Color.GRAY.darker());
         jLabel24.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jLabel24.addMouseListener(new MouseAdapter() {
@@ -113,20 +116,20 @@ public class DataDataset extends javax.swing.JFrame {
                 jLabel16.setText("<html><a href=''>" + "Monitoring User" + "</a></html>");
             }
         });
-        
+
 //        setKolom();
     }
-    
-    
-private void paint_table() {
+
+    private void paint_table() {
         jScrollPane2.getViewport().setBackground(Color.WHITE);
         dataset_tabel.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         dataset_tabel.getTableHeader().setOpaque(false);
         dataset_tabel.getTableHeader().setBackground(new Color(60, 127, 177));
         dataset_tabel.getTableHeader().setForeground(new Color(255, 255, 255));
         dataset_tabel.setRowHeight(50);
-        
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -151,6 +154,26 @@ private void paint_table() {
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        kGradientPanel7 = new keeptoo.KGradientPanel();
+        nama_F = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        kGradientPanel8 = new keeptoo.KGradientPanel();
+        kamera_F = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        kGradientPanel9 = new keeptoo.KGradientPanel();
+        jarak_F = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        kGradientPanel10 = new keeptoo.KGradientPanel();
+        ekspresi_F = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        kGradientPanel11 = new keeptoo.KGradientPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        keterangan_TA = new javax.swing.JTextArea();
+        simpan_B = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -188,14 +211,14 @@ private void paint_table() {
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("ID Face");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 80, 50));
+        jLabel14.setText("ID Dataset");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 110, 50));
 
         txt_id_label.setBackground(new java.awt.Color(132, 242, 145));
         txt_id_label.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         txt_id_label.setForeground(new java.awt.Color(255, 255, 255));
         txt_id_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel3.add(txt_id_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 40, 50));
+        jPanel3.add(txt_id_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 40, 50));
 
         jButton1.setBackground(new java.awt.Color(213, 83, 83));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Filled_Circle_15px_1.png"))); // NOI18N
@@ -274,6 +297,103 @@ private void paint_table() {
                 .addContainerGap(694, Short.MAX_VALUE))
         );
 
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        kGradientPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        kGradientPanel7.setkFillBackground(false);
+        kGradientPanel7.setkStartColor(new java.awt.Color(0, 123, 255));
+        kGradientPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        nama_F.setBorder(null);
+        nama_F.setOpaque(false);
+        kGradientPanel7.add(nama_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 280, 30));
+
+        jPanel2.add(kGradientPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 300, 30));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Data");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 355, 40));
+
+        jLabel2.setText("Nama Lengkap");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        jLabel3.setText("Kamera");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+
+        kGradientPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        kGradientPanel8.setkFillBackground(false);
+        kGradientPanel8.setkStartColor(new java.awt.Color(0, 123, 255));
+        kGradientPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        kamera_F.setBorder(null);
+        kamera_F.setOpaque(false);
+        kGradientPanel8.add(kamera_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 280, 30));
+
+        jPanel2.add(kGradientPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 300, 30));
+
+        jLabel4.setText("Jarak Layar (cm)");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        kGradientPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        kGradientPanel9.setkFillBackground(false);
+        kGradientPanel9.setkStartColor(new java.awt.Color(0, 123, 255));
+        kGradientPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jarak_F.setBorder(null);
+        jarak_F.setOpaque(false);
+        kGradientPanel9.add(jarak_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 280, 30));
+
+        jPanel2.add(kGradientPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 300, 30));
+
+        jLabel5.setText("Ekspresi");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+
+        kGradientPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        kGradientPanel10.setkFillBackground(false);
+        kGradientPanel10.setkStartColor(new java.awt.Color(0, 123, 255));
+        kGradientPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ekspresi_F.setBorder(null);
+        ekspresi_F.setOpaque(false);
+        kGradientPanel10.add(ekspresi_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 280, 30));
+
+        jPanel2.add(kGradientPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 300, 30));
+
+        jLabel7.setText("Keterangan");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
+
+        kGradientPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        kGradientPanel11.setkFillBackground(false);
+        kGradientPanel11.setkStartColor(new java.awt.Color(0, 123, 255));
+        kGradientPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        keterangan_TA.setColumns(20);
+        keterangan_TA.setRows(5);
+        keterangan_TA.setBorder(null);
+        jScrollPane1.setViewportView(keterangan_TA);
+
+        kGradientPanel11.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 110));
+
+        jPanel2.add(kGradientPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 300, 110));
+
+        simpan_B.setBackground(new java.awt.Color(51, 255, 51));
+        simpan_B.setText("Simpan");
+        simpan_B.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simpan_BActionPerformed(evt);
+            }
+        });
+        jPanel2.add(simpan_B, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, -1));
+
+        jButton3.setBackground(new java.awt.Color(255, 0, 0));
+        jButton3.setText("Hapus");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 550, -1, -1));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -284,12 +404,15 @@ private void paint_table() {
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator1)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_search)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 395, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 959, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 326, Short.MAX_VALUE))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_search, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(64, 64, 64))
         );
@@ -307,7 +430,9 @@ private void paint_table() {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
@@ -343,7 +468,7 @@ private void paint_table() {
         dispose();
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
-int id;
+    int id;
     private void dataset_tabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataset_tabelMouseClicked
         // TODO add your handling code here:
         conecta.conexao();
@@ -353,13 +478,52 @@ int id;
             conecta.rs.first();
             id = conecta.rs.getInt("id_regis");
             txt_id_label.setText(String.valueOf(id));
-            
+            nama_F.setText(String.valueOf(conecta.rs.getString("nama_lengkap")));
+            kamera_F.setText(String.valueOf(conecta.rs.getString("kamera")));
+            jarak_F.setText(String.valueOf(conecta.rs.getString("jarak_layar")));
+            ekspresi_F.setText(String.valueOf(conecta.rs.getString("ekspresi")));
+            keterangan_TA.setText(String.valueOf(conecta.rs.getString("keterangan")));
         } catch (SQLException s) {
             //JOptionPane.showMessageDialog(rootPane, "Erro ao Selecionar os Dados!\nErro:" + s);
         }
-        conecta.desconecta();
-        
+//        conecta.desconecta();
+
     }//GEN-LAST:event_dataset_tabelMouseClicked
+
+    private void simpan_BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpan_BActionPerformed
+        ModelPerson mod = new ModelPerson();
+        mod.setId_regis(id);
+        mod.setNama_lengkap(nama_F.getText());
+        mod.setKamera(kamera_F.getText());
+        mod.setJarak_layar(Integer.valueOf(jarak_F.getText()));
+        mod.setEkspresi(ekspresi_F.getText());
+        mod.setKeterangan(keterangan_TA.getText());
+        cod.update(mod, id);
+        cod.getDatasetData("SELECT * FROM dataset_register ORDER BY id_regis", dataset_tabel);
+        nama_F.setText("");
+        kamera_F.setText("");
+        jarak_F.setText("");
+        ekspresi_F.setText("");
+        keterangan_TA.setText("");
+
+    }//GEN-LAST:event_simpan_BActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "Anda yakin Menghapus Data?", "WARNING!",
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            cod.delete(id);
+        cod.getDatasetData("SELECT * FROM dataset_register ORDER BY id_regis", dataset_tabel);
+        nama_F.setText("");
+        kamera_F.setText("");
+        jarak_F.setText("");
+        ekspresi_F.setText("");
+        keterangan_TA.setText("");
+        } else {
+            // no option
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,18 +563,38 @@ int id;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable dataset_tabel;
+    private javax.swing.JTextField ekspresi_F;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jarak_F;
+    private keeptoo.KGradientPanel kGradientPanel10;
+    private keeptoo.KGradientPanel kGradientPanel11;
+    private keeptoo.KGradientPanel kGradientPanel7;
+    private keeptoo.KGradientPanel kGradientPanel8;
+    private keeptoo.KGradientPanel kGradientPanel9;
+    private javax.swing.JTextField kamera_F;
+    private javax.swing.JTextArea keterangan_TA;
+    private javax.swing.JTextField nama_F;
+    private javax.swing.JButton simpan_B;
     private javax.swing.JLabel txt_id_label;
     private javax.swing.JTextField txt_search;
     // End of variables declaration//GEN-END:variables

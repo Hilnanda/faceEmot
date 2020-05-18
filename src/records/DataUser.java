@@ -13,6 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import recognizer.Recognizer;
 import util.Koneks;
 
@@ -154,6 +155,15 @@ public class DataUser extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        kGradientPanel7 = new keeptoo.KGradientPanel();
+        idUser_F = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        kGradientPanel8 = new keeptoo.KGradientPanel();
+        namaUser_F = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -277,6 +287,51 @@ public class DataUser extends javax.swing.JFrame {
                 .addContainerGap(694, Short.MAX_VALUE))
         );
 
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        kGradientPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        kGradientPanel7.setkFillBackground(false);
+        kGradientPanel7.setkStartColor(new java.awt.Color(0, 123, 255));
+        kGradientPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        idUser_F.setEditable(false);
+        idUser_F.setBorder(null);
+        idUser_F.setOpaque(false);
+        kGradientPanel7.add(idUser_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 280, 30));
+
+        jPanel2.add(kGradientPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 300, 30));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Data");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 355, 40));
+
+        jLabel2.setText("ID User");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        jLabel3.setText("Nama User");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+
+        kGradientPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        kGradientPanel8.setkFillBackground(false);
+        kGradientPanel8.setkStartColor(new java.awt.Color(0, 123, 255));
+        kGradientPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        namaUser_F.setEditable(false);
+        namaUser_F.setBorder(null);
+        namaUser_F.setOpaque(false);
+        kGradientPanel8.add(namaUser_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 280, 30));
+
+        jPanel2.add(kGradientPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 300, 30));
+
+        jButton3.setBackground(new java.awt.Color(255, 0, 0));
+        jButton3.setText("Hapus");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -289,11 +344,14 @@ public class DataUser extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator1)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_search)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 395, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 939, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 326, Short.MAX_VALUE)))
                 .addGap(64, 64, 64))
         );
         jPanel1Layout.setVerticalGroup(
@@ -310,7 +368,9 @@ public class DataUser extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
@@ -356,12 +416,31 @@ int id;
             conecta.rs.first();
             id = conecta.rs.getInt("ID_USER");
             txt_id_label.setText(String.valueOf(id));
+            idUser_F.setText(String.valueOf(conecta.rs.getString("ID_USER")));
+            namaUser_F.setText(String.valueOf(conecta.rs.getString("NAMA_USER")));
 
         } catch (SQLException s) {
             //JOptionPane.showMessageDialog(rootPane, "Erro ao Selecionar os Dados!\nErro:" + s);
         }
         conecta.desconecta();
     }//GEN-LAST:event_user_tabelMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "Anda yakin Menghapus Data?", "WARNING!",
+            JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        cod.deleteUser(id);
+        cod.getUserData(""
+                + "SELECT * FROM stimulus "
+                + "inner join userdata "
+                + "on stimulus.ID_STIMULUS = userdata.ID_STIMULUS "
+                + "ORDER BY userdata.ID_USER", user_tabel);
+
+        } else {
+            // no option
+        }
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,18 +478,27 @@ int id;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField idUser_F;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private keeptoo.KGradientPanel kGradientPanel7;
+    private keeptoo.KGradientPanel kGradientPanel8;
+    private javax.swing.JTextField namaUser_F;
     private javax.swing.JLabel txt_id_label;
     private javax.swing.JTextField txt_search;
     private javax.swing.JTable user_tabel;

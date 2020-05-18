@@ -11,9 +11,18 @@ import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import recognizer.Recognizer;
+import records.model.ModelStimulus;
 import util.Koneks;
 
 /**
@@ -115,7 +124,7 @@ public class DataStimulus extends javax.swing.JFrame {
             }
         });
     }
-    
+
     private void paint_table() {
         jScrollPane2.getViewport().setBackground(Color.WHITE);
         stimulus_tabel.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
@@ -123,7 +132,7 @@ public class DataStimulus extends javax.swing.JFrame {
         stimulus_tabel.getTableHeader().setBackground(new Color(60, 127, 177));
         stimulus_tabel.getTableHeader().setForeground(new Color(255, 255, 255));
         stimulus_tabel.setRowHeight(50);
-        
+
     }
 
     /**
@@ -135,6 +144,7 @@ public class DataStimulus extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fileChooser = new javax.swing.JFileChooser();
         jPanel1 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         txt_search = new javax.swing.JTextField();
@@ -150,6 +160,24 @@ public class DataStimulus extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        kGradientPanel7 = new keeptoo.KGradientPanel();
+        namas_F = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        kGradientPanel8 = new keeptoo.KGradientPanel();
+        ekspresis_F = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        kGradientPanel9 = new keeptoo.KGradientPanel();
+        videos_F = new javax.swing.JTextField();
+        simpan_B = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        jButton5 = new javax.swing.JButton();
+
+        fileChooser.setFileFilter(new MyCustomFilter());
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -187,14 +215,14 @@ public class DataStimulus extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("ID Face");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 80, 50));
+        jLabel14.setText("ID Stimulus");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 140, 50));
 
         txt_id_label.setBackground(new java.awt.Color(132, 242, 145));
         txt_id_label.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         txt_id_label.setForeground(new java.awt.Color(255, 255, 255));
         txt_id_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel3.add(txt_id_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 40, 50));
+        jPanel3.add(txt_id_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 40, 50));
 
         jButton1.setBackground(new java.awt.Color(213, 83, 83));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Filled_Circle_15px_1.png"))); // NOI18N
@@ -273,6 +301,90 @@ public class DataStimulus extends javax.swing.JFrame {
                 .addContainerGap(694, Short.MAX_VALUE))
         );
 
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        kGradientPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        kGradientPanel7.setkFillBackground(false);
+        kGradientPanel7.setkStartColor(new java.awt.Color(0, 123, 255));
+        kGradientPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        namas_F.setBorder(null);
+        namas_F.setOpaque(false);
+        kGradientPanel7.add(namas_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 280, 30));
+
+        jPanel2.add(kGradientPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 300, 30));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Data");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 355, 40));
+
+        jLabel2.setText("Nama Stimulus");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        jLabel3.setText("Ekspresi Stimulus");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+
+        kGradientPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        kGradientPanel8.setkFillBackground(false);
+        kGradientPanel8.setkStartColor(new java.awt.Color(0, 123, 255));
+        kGradientPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ekspresis_F.setBorder(null);
+        ekspresis_F.setOpaque(false);
+        kGradientPanel8.add(ekspresis_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 280, 30));
+
+        jPanel2.add(kGradientPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 300, 30));
+
+        jLabel4.setText("Alamat Video");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        kGradientPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        kGradientPanel9.setkFillBackground(false);
+        kGradientPanel9.setkStartColor(new java.awt.Color(0, 123, 255));
+        kGradientPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        videos_F.setBorder(null);
+        videos_F.setOpaque(false);
+        kGradientPanel9.add(videos_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 190, 30));
+
+        jPanel2.add(kGradientPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 210, 30));
+
+        simpan_B.setBackground(new java.awt.Color(51, 255, 51));
+        simpan_B.setText("Simpan");
+        simpan_B.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simpan_BActionPerformed(evt);
+            }
+        });
+        jPanel2.add(simpan_B, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
+
+        jButton3.setBackground(new java.awt.Color(255, 0, 0));
+        jButton3.setText("Hapus");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
+
+        jButton2.setBackground(new java.awt.Color(153, 204, 255));
+        jButton2.setText("Tambah Data");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 300, 40));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 310, 10));
+
+        jButton5.setText("File");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 80, -1));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -285,11 +397,14 @@ public class DataStimulus extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator1)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_search)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 395, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(64, 64, 64))
         );
         jPanel1Layout.setVerticalGroup(
@@ -306,7 +421,9 @@ public class DataStimulus extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
@@ -352,12 +469,72 @@ public class DataStimulus extends javax.swing.JFrame {
             conecta.rs.first();
             id = conecta.rs.getInt("ID_STIMULUS");
             txt_id_label.setText(String.valueOf(id));
-
+            namas_F.setText(String.valueOf(conecta.rs.getString("NAMA_STIMULUS")));
+            ekspresis_F.setText(String.valueOf(conecta.rs.getString("EKSPRESI_STIMULUS")));
+            videos_F.setText(String.valueOf(conecta.rs.getString("SOURCE_STIMULUS")));
         } catch (SQLException s) {
             //JOptionPane.showMessageDialog(rootPane, "Erro ao Selecionar os Dados!\nErro:" + s);
         }
         conecta.desconecta();
     }//GEN-LAST:event_stimulus_tabelMouseClicked
+
+    private void simpan_BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpan_BActionPerformed
+        // TODO add your handling code here:
+        ModelStimulus mod = new ModelStimulus();
+        mod.setId_stimulus(id);
+        mod.setNama_stimulus(namas_F.getText());
+        mod.setSource_stimulus(videos_F.getText());
+        mod.setEkspresi_stimulus(String.valueOf(ekspresis_F.getText()));
+        cod.updateStimulus(mod, id);
+        cod.getStimulusData("SELECT * FROM stimulus ORDER BY ID_STIMULUS", stimulus_tabel);
+        namas_F.setText("");
+        videos_F.setText("");
+        ekspresis_F.setText("");
+    }//GEN-LAST:event_simpan_BActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "Anda yakin Menghapus Data?", "WARNING!",
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            cod.deleteStimulus(id);
+            cod.getStimulusData("SELECT * FROM stimulus ORDER BY ID_STIMULUS", stimulus_tabel);
+            namas_F.setText("");
+            videos_F.setText("");
+            ekspresis_F.setText("");
+        } else {
+            // no option
+        }
+
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+   
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        ModelStimulus mod = new ModelStimulus();
+//        mod.setNama_stimulus(nama_stimulus);
+        mod.setNama_stimulus(namas_F.getText());
+        mod.setSource_stimulus(videos_F.getText());
+        mod.setEkspresi_stimulus(String.valueOf(ekspresis_F.getText()));
+        cod.insertStimulus(mod);
+        cod.getStimulusData("SELECT * FROM stimulus ORDER BY ID_STIMULUS", stimulus_tabel);
+        namas_F.setText("");
+        videos_F.setText("");
+        ekspresis_F.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        int returnVal = fileChooser.showOpenDialog(this);
+    if (returnVal == JFileChooser.APPROVE_OPTION) {
+        File file = fileChooser.getSelectedFile();
+        // What to do with the file, e.g. display it in a TextArea
+        videos_F.setText(fileChooser.getSelectedFile().getName());
+    } else {
+        System.out.println("File access cancelled by user.");
+    }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -396,20 +573,37 @@ public class DataStimulus extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ekspresis_F;
+    private javax.swing.JFileChooser fileChooser;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private keeptoo.KGradientPanel kGradientPanel7;
+    private keeptoo.KGradientPanel kGradientPanel8;
+    private keeptoo.KGradientPanel kGradientPanel9;
+    private javax.swing.JTextField namas_F;
+    private javax.swing.JButton simpan_B;
     private javax.swing.JTable stimulus_tabel;
     private javax.swing.JLabel txt_id_label;
     private javax.swing.JTextField txt_search;
+    private javax.swing.JTextField videos_F;
     // End of variables declaration//GEN-END:variables
 }
